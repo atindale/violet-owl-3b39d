@@ -44,10 +44,132 @@ seo:
 layout: post
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Laoreet sit amet cursus sit amet dictum sit. Duis ut diam quam nulla porttitor massa id neque. Ut tortor pretium viverra suspendisse potenti nullam. Auctor elit sed vulputate mi sit amet mauris commodo. Dui ut ornare lectus sit amet est placerat. Et malesuada fames ac turpis. Nunc vel risus commodo viverra maecenas accumsan lacus vel. Varius morbi enim nunc faucibus a pellentesque. Erat imperdiet sed euismod nisi porta. Viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas. Dui ut ornare lectus sit amet est placerat in. Vitae sapien pellentesque habitant morbi tristique senectus et netus et. Nullam vehicula ipsum a arcu cursus vitae congue mauris.
+This post gives a quick reference to the various Python docstrings.
 
-Aenean sed adipiscing diam donec. Id donec ultrices tincidunt arcu non sodales. Orci ac auctor augue mauris augue neque gravida in. Mattis enim ut tellus elementum sagittis vitae et leo duis. Tortor pretium viverra suspendisse potenti nullam. Malesuada proin libero nunc consequat. Commodo viverra maecenas accumsan lacus vel facilisis volutpat est velit. Mauris vitae ultricies leo integer malesuada nunc. Eget magna fermentum iaculis eu. Molestie at elementum eu facilisis. Dui faucibus in ornare quam viverra orci sagittis. Aliquam ultrices sagittis orci a scelerisque purus semper eget.
+# Comparison
 
-Tellus mauris a diam maecenas sed enim. Enim facilisis gravida neque convallis a cras. Sollicitudin nibh sit amet commodo nulla facilisi. Ultrices mi tempus imperdiet nulla malesuada pellentesque. Semper viverra nam libero justo laoreet sit. Vestibulum sed arcu non odio euismod lacinia at quis risus. Viverra ipsum nunc aliquet bibendum enim facilisis gravida neque convallis. Aliquam sem et tortor consequat id porta nibh venenatis cras. Et leo duis ut diam quam nulla porttitor massa id. Sagittis vitae et leo duis ut diam quam. Vitae aliquet nec ullamcorper sit amet. Egestas egestas fringilla phasellus faucibus. Elit pellentesque habitant morbi tristique senectus et netus et. Sagittis purus sit amet volutpat consequat mauris nunc. Commodo odio aenean sed adipiscing. Aliquet eget sit amet tellus cras adipiscing. Odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Justo eget magna fermentum iaculis eu non.
+|                  | Pros                                              | Cons                     |
+|------------------|---------------------------------------------------|--------------------------|
+| ReStructuredText | Most common format                                | A bit hard to read       |
+| Google Style     | Better for short descriptions and documentation   | Not very good for complex documention |
+| Numpy Style      | Better for complex descriptions and documentation | Uses more vertical space |
 
-Mi quis hendrerit dolor magna. Vel facilisis volutpat est velit egestas dui id ornare arcu. Sed sed risus pretium quam vulputate. Quam viverra orci sagittis eu volutpat odio facilisis mauris. Enim eu turpis egestas pretium. Lorem ipsum dolor sit amet consectetur adipiscing elit duis. Turpis egestas pretium aenean pharetra magna ac. Enim diam vulputate ut pharetra sit amet aliquam id. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Amet nulla facilisi morbi tempus. Aliquet bibendum enim facilisis gravida neque convallis. Nulla pharetra diam sit amet. Vitae nunc sed velit dignissim sodales ut.
+# ReStructured Text
+
+ReStructuredText is a markup language, much like Markdown, that's been used to document code (among other uses).
+
+```python
+def func(arg1, arg2):
+    """Summary line.
+
+    Extended description of function.
+
+    :param int arg1: Description of arg1.
+    :param str arg2: Description of arg2.
+    :raise: ValueError if arg1 is equal to arg2
+    :return: Description of return value
+    :rtype: bool
+
+    :example:
+
+    >>> a=1
+    >>> b=2
+    >>> func(a,b)
+    True
+    """
+
+    if arg1 == arg2:
+        raise ValueError('arg1 must not be equal to arg2')
+
+    return True
+```
+
+# Google Style
+
+```python
+def func(arg1, arg2):
+    """Summary line.
+
+    Extended description of function.
+
+    Args:
+        arg1 (int): Description of arg1
+        arg2 (str): Description of arg2
+
+    Returns:
+        bool: Description of return value
+
+    Raises:
+        AttributeError: The ``Raises`` section is a list of all exceptions
+            that are relevant to the interface.
+        ValueError: If `arg2` is equal to `arg1`.
+
+    Examples:
+        Examples should be written in doctest format, and should illustrate how
+        to use the function.
+
+        >>> a=1
+        >>> b=2
+        >>> func(a,b)
+        True
+
+    """
+    if arg1 == arg2:
+        raise ValueError('arg1 must not be equal to arg2')
+
+    return True
+```
+
+# Numpy Style
+
+```python
+def func(arg1, arg2):
+    """Summary line.
+
+    Extended description of function.
+
+    Parameters
+    ----------
+    arg1 : int
+        Description of arg1
+    arg2 : str
+        Description of arg2
+
+    Returns
+    -------
+    bool
+        Description of return value
+
+    Raises
+    ------
+    AttributeError
+        The ``Raises`` section is a list of all exceptions
+        that are relevant to the interface.
+    ValueError
+        If `arg2` is equal to `arg1`.
+
+    See Also
+    --------
+    otherfunc: some other related function
+
+    Examples
+    --------
+    These are written in doctest format, and should illustrate how to
+    use the function.
+
+    >>> a=1
+    >>> b=2
+    >>> func(a,b)
+    True
+    """
+    if arg1 == arg2:
+        raise ValueError('arg1 must not be equal to arg2')
+
+    return True
+```
+
+# References
+
+[PEP 257 Docstring Conventions](https://www.python.org/dev/peps/pep-0257/)
+
+
