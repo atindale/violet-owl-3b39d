@@ -1,6 +1,6 @@
 ---
 title: Python Docstrings
-subtitle: 'A comparison of the various styles of documentation commenting'
+subtitle: 'A comparison of the various styles of Python documentation commenting'
 excerpt: >-
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
   incididunt ut labore et dolore magna aliqua.
